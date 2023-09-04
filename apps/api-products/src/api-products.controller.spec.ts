@@ -11,12 +11,14 @@ describe('ApiProductsController', () => {
       providers: [ApiProductsService],
     }).compile();
 
-    apiProductsController = app.get<ApiProductsController>(ApiProductsController);
+    apiProductsController = app.get<ApiProductsController>(
+      ApiProductsController,
+    );
   });
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(apiProductsController.getHello()).toBe('Hello World!');
+      expect(apiProductsController.health()).toBe('Hello World!');
     });
   });
 });

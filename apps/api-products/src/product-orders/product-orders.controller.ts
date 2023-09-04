@@ -12,7 +12,9 @@ import {
 import { CreateProductOrderDto } from './dto/create-product-order.dto';
 import { UpdateProductOrderDto } from './dto/update-product-order.dto';
 import { ProductOrdersService } from './product-orders.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Product Orders')
 @Controller('product-orders')
 @UsePipes(new ValidationPipe({ transform: true }))
 export class ProductOrdersController {
