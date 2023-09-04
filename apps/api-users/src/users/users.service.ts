@@ -29,6 +29,6 @@ export class UsersService {
   }
 
   remove(id: number) {
-    return this.remove(id);
+    return this.userRepository.delete(id);
   }
 }
