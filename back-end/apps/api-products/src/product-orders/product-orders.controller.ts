@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -21,8 +22,20 @@ export class ProductOrdersController {
   constructor(private readonly productOrdersService: ProductOrdersService) {}
 
   @Post()
-  create(@Body() createProductOrderDto: CreateProductOrderDto) {
-    return this.productOrdersService.create(createProductOrderDto);
+  async create(@Body() createProductOrderDto: CreateProductOrderDto) {
+    const { userId } = createProductOrderDto;
+
+    try {
+      const user = await (
+        await fetch(`http://localhost:3000/users/${userId}`)
+      ).json();
+
+      if (user) {
+        return this.productOrdersService.create(createProductOrderDto);
+      }
+    } catch (error) {
+      throw new BadRequestException('invalid user id association');
+    }
   }
 
   @Get()
@@ -33,6 +46,11 @@ export class ProductOrdersController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productOrdersService.findOne(+id);
+  }
+
+  @Get('/user/:userId')
+  findByUser(@Param('userId') userId: string) {
+    return this.productOrdersService.findByUserId(+userId);
   }
 
   @Patch(':id')

@@ -25,6 +25,10 @@ export class ProductOrdersService {
     return this.productOrdersRepository.findOne({ where: { id } });
   }
 
+  findByUserId(userId: number) {
+    return this.productOrdersRepository.find({ where: { userId } });
+  }
+
   update(id: number, updateProductOrderDto: UpdateProductOrderDto) {
     return this.productOrdersRepository.update(id, updateProductOrderDto);
   }
