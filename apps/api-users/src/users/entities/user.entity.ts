@@ -34,4 +34,8 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: string;
+
+  constructor(partial: Partial<User> = {}) {
+    Object.assign(this, partial);
+  }
 }
