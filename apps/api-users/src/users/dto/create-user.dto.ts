@@ -1,6 +1,6 @@
-import { IsDate, IsDateString, IsPhoneNumber, IsString } from 'class-validator';
-import { Transform } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
+import { IsDate, IsPhoneNumber, IsString } from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
