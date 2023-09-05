@@ -5,6 +5,8 @@ import { ApiProductsModule } from './products.module';
 async function bootstrap() {
   const app = await NestFactory.create(ApiProductsModule);
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Tech Social Test')
     .setDescription('')

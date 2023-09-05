@@ -16,7 +16,7 @@ import { ProductOrdersService } from './orders.service';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Product Orders')
-@Controller('product-orders')
+@Controller('products/orders')
 @UsePipes(new ValidationPipe({ transform: true }))
 export class ProductOrdersController {
   constructor(private readonly productOrdersService: ProductOrdersService) {}
