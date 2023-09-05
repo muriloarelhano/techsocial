@@ -3,7 +3,7 @@ import Link from 'next/link';
 export function Sidebar() {
   return (
     <nav className="px-8 h-full">
-      <ul className="menu bg-base-200 w-56 rounded-box h-full">
+      <ul className="menu bg-base-100 w-56 rounded-lg h-full">
         <li>
           <Link href={'/dashboard/account'}>
             <p>Minha Conta</p>
@@ -24,7 +24,7 @@ export function Sidebar() {
                 </Link>
               </li>
               <li>
-                <Link href={'/dashboard/user-products'}>
+                <Link href={'/dashboard/products/user'}>
                   <p>Por Usuário </p>
                 </Link>
               </li>
