@@ -7,3 +7,7 @@ export const userApiClient = axios.create({
 export async function getUserDataById(id: number) {
   return (await userApiClient.get(`/${id}`)).data;
 }
+
+export async function getUsers(): Promise<any[]> {
+  return (await userApiClient.get('')).data;
+}

@@ -10,22 +10,39 @@ export function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link href={'/dashboard/users'}>
-            <p>Usuários</p>
-          </Link>
+          <details open>
+            <summary>Usuários</summary>
+            <ul>
+              <li>
+                <Link href={'/dashboard/users/new'}>
+                  <p>Cadastrar</p>
+                </Link>
+              </li>
+              <li>
+                <Link href={'/dashboard/users'}>
+                  <p>Listar</p>
+                </Link>
+              </li>
+            </ul>
+          </details>
         </li>
         <li>
           <details open>
             <summary>Produtos</summary>
             <ul>
               <li>
+                <Link href={'/dashboard/products/new'}>
+                  <p>Cadastrar</p>
+                </Link>
+              </li>
+              <li>
                 <Link href={'/dashboard/products'}>
-                  <p>Todos</p>
+                  <p>Listar</p>
                 </Link>
               </li>
               <li>
                 <Link href={'/dashboard/products/user'}>
-                  <p>Por Usuário </p>
+                  <p>Listar por usuário </p>
                 </Link>
               </li>
             </ul>
