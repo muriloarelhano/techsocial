@@ -246,9 +246,6 @@ importers:
       eslint-config-next:
         specifier: 13.4.19
         version: 13.4.19(eslint@8.48.0)(typescript@5.2.2)
-      imask:
-        specifier: ^7.1.3
-        version: 7.1.3
       luxon:
         specifier: ^3.4.2
         version: 3.4.2
@@ -264,6 +261,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-toastify:
+        specifier: ^9.1.3
+        version: 9.1.3(react-dom@18.2.0)(react@18.2.0)
       tailwindcss:
         specifier: 3.3.3
         version: 3.3.3
@@ -671,14 +671,6 @@ packages:
       '@babel/core': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
-
-  /@babel/runtime-corejs3@7.22.15:
-    resolution: {integrity: sha512-SAj8oKi8UogVi6eXQXKNPu8qZ78Yzy7zawrlTr0M+IuW/g8Qe9gVDhGcF9h1S69OyACpYoLxEzpjs1M15sI5wQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      core-js-pure: 3.32.1
-      regenerator-runtime: 0.14.0
-    dev: false
 
   /@babel/runtime@7.22.15:
     resolution: {integrity: sha512-T0O+aa+4w0u06iNmapipJXMV4HoUir03hpx3/YqXXhu9xim3w+dVphjFWl1OH8NbZHw5Lbm9k45drDkgq2VNNA==}
@@ -2597,6 +2589,11 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
   /co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
@@ -2702,11 +2699,6 @@ packages:
   /cookiejar@2.1.4:
     resolution: {integrity: sha512-LDx6oHrK+PhzLKJU9j5S7/Y3jM/mUHvD/DeI1WQmJn652iPC5Y4TBzC9l+5OMOXlyTTA+SmVUPm0HQUwpD5Jqw==}
     dev: true
-
-  /core-js-pure@3.32.1:
-    resolution: {integrity: sha512-f52QZwkFVDPf7UEQZGHKx6NYxsxmVGJe5DIvbzOdRMJlmT6yv0KDjR8rmy3ngr/t5wU54c7Sp/qIJH0ppbhVpQ==}
-    requiresBuild: true
-    dev: false
 
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -3986,13 +3978,6 @@ packages:
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
-
-  /imask@7.1.3:
-    resolution: {integrity: sha512-jZCqTI5Jgukhl2ff+znBQd8BiHOTlnFYCIgggzHYDdoJsHmSSWr1BaejcYBxsjy4ZIs8Rm0HhbOxQcobcdESRQ==}
-    engines: {npm: '>=4.0.0'}
-    dependencies:
-      '@babel/runtime-corejs3': 7.22.15
-    dev: false
 
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -5843,6 +5828,17 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
+
+  /react-toastify@9.1.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fPfb8ghtn/XMxw3LkxQBk3IyagNpF/LIKjOBflbexr2AWxAH1MJgvnESwEwBn9liLFXgTKWgBSdZpw9m4OTHTg==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      clsx: 1.2.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

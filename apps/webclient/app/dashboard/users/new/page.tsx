@@ -1,24 +1,15 @@
 'use client';
 
+import { createUser } from '@/apps/webclient/services/user';
+import { CreateUserProps, createUserSchema } from '@/apps/webclient/types';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import validator from 'validator';
-import { TypeOf, object, string } from 'zod';
-
-const createUserSchema = object({
-  firstName: string().nonempty(),
-  lastName: string().nonempty(),
-  document: string().nonempty(),
-  email: string().email(),
-  phoneNumber: string().min(10).refine(validator.isMobilePhone),
-  birthDate: string(),
-});
-
-type CreateUserProps = TypeOf<typeof createUserSchema>;
-
-const onSubmit = (data: CreateUserProps) => console.log(data);
+import { toast } from 'react-toastify';
 
 export default function CreateUser() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     handleSubmit,
     formState: { errors },
@@ -26,6 +17,18 @@ export default function CreateUser() {
   } = useForm<CreateUserProps>({
     resolver: zodResolver(createUserSchema),
   });
+
+  const onSubmit = useCallback(async (data: CreateUserProps) => {
+    console.log(data);
+    setIsLoading(true);
+    try {
+      await createUser(data);
+      toast.success('Usuário criado com sucesso');
+    } catch (error) {
+      toast.error('Erro ao cadastrar usuário');
+    }
+    setIsLoading(false);
+  }, []);
 
   return (
     <div>
@@ -123,6 +126,7 @@ export default function CreateUser() {
         <input
           form="create-user-form"
           type="submit"
+          disabled={isLoading}
           className="btn btn-primary col-start-3"
         />
       </form>
