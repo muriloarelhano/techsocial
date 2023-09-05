@@ -17,9 +17,9 @@ export class CreateUserDto {
 
   @ApiProperty({
     description: 'Phone number in E.164 format',
-    example: '+5511999999999',
+    example: '11999999999',
   })
-  @IsPhoneNumber()
+  @IsPhoneNumber('BR')
   phoneNumber: string;
 
   @ApiProperty({
