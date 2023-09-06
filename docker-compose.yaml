@@ -1,5 +1,53 @@
 version: '3'
+
 services:
+  webclient:
+    image: techsocial/webclient:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+      args:
+        APP_NAME: webclient
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    environment:
+      APP_NAME: webclient
+    networks:
+      - techsocial
+
+  users-api:
+    image: techsocial/users-api:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+      args:
+        APP_NAME: users-api
+    ports:
+      - 3001:3001
+    env_file:
+      - .env
+    networks:
+      - techsocial
+
+  orders-api:
+    image: techsocial/orders-api:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+      args:
+        APP_NAME: orders-api
+    ports:
+      - 3002:3002
+    env_file:
+      - .env
+    networks:
+      - techsocial
+
   database:
     image: 'postgres:alpine'
     ports:

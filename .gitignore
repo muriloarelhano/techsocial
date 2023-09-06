@@ -4,11 +4,12 @@ tmp
 temp
 out-tsc
 
+
 # dependencies
 node_modules
 .next/
 .swc/
-.*.env
+*.env
 
 # IDEs and editors
 /.idea

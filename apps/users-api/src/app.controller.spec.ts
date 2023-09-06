@@ -14,9 +14,7 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return object with status of application', () => {
-      expect(appController.health()).toBe({ status: 'ok' });
-    });
+  it('should return object with status of application', () => {
+    expect(appController.health()).toBe({ status: 'ok' });
   });
 });
