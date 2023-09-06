@@ -15,6 +15,7 @@ describe('AppController', () => {
   });
 
   it('should return object with status of application', () => {
-    expect(appController.health()).toBe({ status: 'ok' });
+    const result = appController.health();
+    expect(JSON.stringify(result)).toBe(JSON.stringify({ status: 'ok' }));
   });
 });

@@ -15,8 +15,10 @@ describe('ApiProductsController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(apiProductsController.health()).toBe('Hello World!');
+    it('should return app status', () => {
+      expect(JSON.stringify(apiProductsController.health())).toBe(
+        JSON.stringify({ status: 'ok' }),
+      );
     });
   });
 });
