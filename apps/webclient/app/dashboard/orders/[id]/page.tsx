@@ -7,7 +7,6 @@ import {
 } from '@/apps/webclient/services';
 import { getUsers } from '@/apps/webclient/services/user';
 import { OrderProps, OrderSchema } from '@/apps/webclient/types/order';
-import { DevTool } from '@hookform/devtools';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
@@ -29,7 +28,6 @@ export default function CreateProducts({ params }) {
 
   const {
     watch,
-    control,
     register,
     setValue,
     handleSubmit,
@@ -74,7 +72,6 @@ export default function CreateProducts({ params }) {
 
   return (
     <div>
-      <DevTool control={control} />
       <h1 className="text-2xl mb-8">Criar Pedido</h1>
       <form
         id="create-user-form"
@@ -159,7 +156,7 @@ export default function CreateProducts({ params }) {
 
             <button
               type="submit"
-              disabled={isSaving || !order}
+              disabled={isSaving}
               form="create-user-form"
               className="btn btn-primary place-self-end"
             >
