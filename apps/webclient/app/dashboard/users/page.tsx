@@ -14,7 +14,7 @@ export default function Users() {
 
   return (
     <div>
-      <h1 className="text-2xl">Usuários</h1>
+      <h1 className="text-2xl mb-8">Usuários</h1>
       <DataTable<CreateUserProps>
         data={users!}
         columns={columns}

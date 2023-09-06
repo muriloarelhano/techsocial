@@ -28,11 +28,8 @@ export default function UsersProducts() {
   );
   return (
     <div>
-      <h1 className="text-2xl">Pedidos por usuário</h1>
-      <select
-        className="select select-bordered w-full max-w-xs"
-        {...register('userId')}
-      >
+      <h1 className="text-2xl mb-8">Pedidos por usuário</h1>
+      <select className="select  w-full max-w-xs mb-4" {...register('userId')}>
         <option value={''}>Selecione um usuário</option>
 
         {users?.map((user, index) => (

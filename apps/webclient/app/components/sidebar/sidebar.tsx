@@ -5,11 +5,6 @@ export function Sidebar() {
     <nav className="px-8 h-full">
       <ul className="menu bg-base-100 w-56 rounded-lg h-full">
         <li>
-          <Link href={'/dashboard/account'}>
-            <p>Minha Conta</p>
-          </Link>
-        </li>
-        <li>
           <details open>
             <summary>Usuários</summary>
             <ul>

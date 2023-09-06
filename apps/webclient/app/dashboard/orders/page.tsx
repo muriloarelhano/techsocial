@@ -11,7 +11,7 @@ export default function Orders() {
   );
   return (
     <div>
-      <h1 className="text-2xl mb-4">Pedidos</h1>
+      <h1 className="text-2xl mb-8">Pedidos</h1>
       <DataTable data={orders!} columns={columns} isLoading={isLoading} />
     </div>
   );

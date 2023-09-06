@@ -32,7 +32,7 @@ export default function CreateUser() {
 
   return (
     <div>
-      <h1 className="text-2xl">Criar Usuário</h1>
+      <h1 className="text-2xl mb-8">Criar Usuário</h1>
       <form
         id="create-user-form"
         className="mt-4 grid md:grid-cols-2 sm:grid-cols-1 gap-4 "
@@ -45,7 +45,7 @@ export default function CreateUser() {
           <input
             type="text"
             placeholder="Primeiro Nome"
-            className="input input-bordered w-full max-w-xs"
+            className="input  w-full max-w-xs"
             {...register('firstName')}
           />
           {errors.firstName && (
@@ -59,7 +59,7 @@ export default function CreateUser() {
           <input
             type="text"
             placeholder="Último Nome"
-            className="input input-bordered w-full max-w-xs"
+            className="input  w-full max-w-xs"
             {...register('lastName')}
           />
           {errors.lastName && (
@@ -73,7 +73,7 @@ export default function CreateUser() {
           <input
             type="text"
             placeholder="Documento"
-            className="input input-bordered w-full max-w-xs"
+            className="input  w-full max-w-xs"
             {...register('document')}
           />
           {errors.document && (
@@ -87,7 +87,7 @@ export default function CreateUser() {
           <input
             type="email"
             placeholder="Email"
-            className="input input-bordered w-full max-w-xs"
+            className="input  w-full max-w-xs"
             {...register('email')}
           />
           {errors.email && (
@@ -100,7 +100,7 @@ export default function CreateUser() {
           </label>
           <input
             type="date"
-            className="input input-bordered w-full max-w-xs"
+            className="input  w-full max-w-xs"
             {...register('birthDate')}
           />
           {errors.birthDate && (
@@ -115,7 +115,7 @@ export default function CreateUser() {
           <input
             type="tel"
             placeholder="(00) 00000-0000"
-            className="input input-bordered w-full max-w-xs"
+            className="input  w-full max-w-xs"
             {...register('phoneNumber')}
           />
           {errors.phoneNumber && (
@@ -127,7 +127,7 @@ export default function CreateUser() {
           form="create-user-form"
           type="submit"
           disabled={isLoading}
-          className="btn btn-primary col-start-3"
+          className="btn btn-primary col-start-3 place-self-end"
         />
       </form>
     </div>
