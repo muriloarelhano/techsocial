@@ -45,7 +45,7 @@ export default function Home() {
                 type="text"
                 value={'demouser'}
                 placeholder="email"
-                className="input "
+                className="input input-bordered  "
               />
             </div>
             <div className="form-control">
@@ -56,7 +56,7 @@ export default function Home() {
                 type="text"
                 value={'demopass'}
                 placeholder="password"
-                className="input "
+                className="input input-bordered  "
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">

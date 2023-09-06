@@ -61,7 +61,10 @@ export default function CreateProducts() {
             name="userId"
             control={control}
             render={({ field }) => (
-              <select className="select  w-full max-w-xs" {...field}>
+              <select
+                className="select select-bordered w-full max-w-xs"
+                {...field}
+              >
                 <option value={''}>Selecione um usuário</option>
                 {data?.map((user, index) => (
                   <option key={index + 1} value={user.id}>
@@ -93,7 +96,7 @@ export default function CreateProducts() {
               </label>
               <input
                 type="number"
-                className="input  w-full max-w-xs"
+                className="input input-bordered   w-full max-w-xs"
                 {...register('price')}
               />
               {errors.quantity && (
@@ -123,7 +126,7 @@ export default function CreateProducts() {
               </label>
               <input
                 type="number"
-                className="input  w-full max-w-xs"
+                className="input input-bordered   w-full max-w-xs"
                 {...register('quantity')}
               />
               {errors.quantity && (

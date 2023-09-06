@@ -48,7 +48,7 @@ export function DataTable<DataType>({
             table.setGlobalFilter(String(value));
             setGlobalFilterValue(String(value));
           }}
-          className="input"
+          className="input input-bordered "
           placeholder="Busque por todas as colunas"
         />
       </div>

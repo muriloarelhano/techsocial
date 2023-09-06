@@ -45,7 +45,7 @@ export default function CreateUser() {
           <input
             type="text"
             placeholder="Primeiro Nome"
-            className="input  w-full max-w-xs"
+            className="input input-bordered   w-full max-w-xs"
             {...register('firstName')}
           />
           {errors.firstName && (
@@ -59,7 +59,7 @@ export default function CreateUser() {
           <input
             type="text"
             placeholder="Último Nome"
-            className="input  w-full max-w-xs"
+            className="input input-bordered   w-full max-w-xs"
             {...register('lastName')}
           />
           {errors.lastName && (
@@ -73,7 +73,7 @@ export default function CreateUser() {
           <input
             type="text"
             placeholder="Documento"
-            className="input  w-full max-w-xs"
+            className="input input-bordered   w-full max-w-xs"
             {...register('document')}
           />
           {errors.document && (
@@ -87,7 +87,7 @@ export default function CreateUser() {
           <input
             type="email"
             placeholder="Email"
-            className="input  w-full max-w-xs"
+            className="input input-bordered   w-full max-w-xs"
             {...register('email')}
           />
           {errors.email && (
@@ -100,7 +100,7 @@ export default function CreateUser() {
           </label>
           <input
             type="date"
-            className="input  w-full max-w-xs"
+            className="input input-bordered   w-full max-w-xs"
             {...register('birthDate')}
           />
           {errors.birthDate && (
@@ -115,7 +115,7 @@ export default function CreateUser() {
           <input
             type="tel"
             placeholder="(00) 00000-0000"
-            className="input  w-full max-w-xs"
+            className="input input-bordered   w-full max-w-xs"
             {...register('phoneNumber')}
           />
           {errors.phoneNumber && (
