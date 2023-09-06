@@ -1,18 +1,25 @@
 'use client';
 
-import { createOrder } from '@/apps/webclient/services';
-import { getUsers } from '@/apps/webclient/services/user';
 import {
-  CreateOrderProps,
-  cerateOrderSchema,
-} from '@/apps/webclient/types/order';
+  createOrder,
+  getOrderById,
+  updateOrder,
+} from '@/apps/webclient/services';
+import { getUsers } from '@/apps/webclient/services/user';
+import { OrderProps, OrderSchema } from '@/apps/webclient/types/order';
+import { DevTool } from '@hookform/devtools';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQuery } from '@tanstack/react-query';
-import { useCallback, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useCallback, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-export default function CreateProducts() {
+export default function CreateProducts({ params }) {
+  const [isSaving, setIsSaving] = useState(false);
+  const [order, setOrder] = useState<OrderProps>();
+
+  const isEditing = params.id != 'new';
+
   const { data, isError } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
@@ -20,33 +27,54 @@ export default function CreateProducts() {
     },
   });
 
-  const [isSaving, setIsSaving] = useState(false);
-
   const {
+    watch,
     control,
+    register,
+    setValue,
     handleSubmit,
     formState: { errors },
-    register,
-    watch,
-  } = useForm<CreateOrderProps>({
-    resolver: zodResolver(cerateOrderSchema),
+  } = useForm<OrderProps>({
+    resolver: zodResolver(OrderSchema),
   });
-
-  const onSubmit = useCallback(async (data: CreateOrderProps) => {
-    setIsSaving(true);
-    try {
-      await createOrder(data);
-      toast.success('Pedido criado com sucesso');
-    } catch (error) {
-      toast.error('Erro ao cadastrar usuário');
-    }
-    setIsSaving(false);
-  }, []);
 
   const userId = watch('userId');
 
+  useEffect(() => {
+    if (isEditing) {
+      (async () => {
+        const order = await getOrderById(params.id);
+        setOrder(order);
+        for (const key of Object.keys(order)) {
+          setValue(key, order[key]);
+        }
+      })();
+    }
+  }, [isEditing, params.id, setValue]);
+
+  const onSubmit = useCallback(
+    async (data: OrderProps) => {
+      setIsSaving(true);
+      try {
+        if (isEditing && order) {
+          await updateOrder({ id: order.id, ...data });
+        } else {
+          await createOrder(data);
+        }
+        toast.success(
+          `Pedido ${isEditing ? 'editado' : 'cadastrado'} com sucesso`,
+        );
+      } catch (error) {
+        toast.error('Erro ao cadastrar usuário');
+      }
+      setIsSaving(false);
+    },
+    [isEditing, order],
+  );
+
   return (
     <div>
+      <DevTool control={control} />
       <h1 className="text-2xl mb-8">Criar Pedido</h1>
       <form
         id="create-user-form"
@@ -57,24 +85,18 @@ export default function CreateProducts() {
           <label className="label">
             <span className="label-text">Usuário</span>
           </label>
-          <Controller
-            name="userId"
-            control={control}
-            render={({ field }) => (
-              <select
-                className="select select-bordered w-full max-w-xs"
-                {...field}
-              >
-                <option value={''}>Selecione um usuário</option>
-                {data?.map((user, index) => (
-                  <option key={index + 1} value={user.id}>
-                    {user.firstName}
-                    {user.lastName}
-                  </option>
-                ))}
-              </select>
-            )}
-          />
+          <select
+            className="select select-bordered w-full max-w-xs"
+            {...register('userId')}
+          >
+            <option value={''}>Selecione um usuário</option>
+            {data?.map((user, index) => (
+              <option key={index + 1} value={user.id}>
+                {user.firstName}
+                {user.lastName}
+              </option>
+            ))}
+          </select>
 
           {errors.userId && (
             <span className="text-red-300">
@@ -137,7 +159,7 @@ export default function CreateProducts() {
 
             <button
               type="submit"
-              disabled={isSaving}
+              disabled={isSaving || !order}
               form="create-user-form"
               className="btn btn-primary place-self-end"
             >

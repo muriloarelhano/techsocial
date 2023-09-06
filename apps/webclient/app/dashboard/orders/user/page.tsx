@@ -44,7 +44,11 @@ export default function UsersProducts() {
       </select>
 
       {userId && userOrders ? (
-        <DataTable data={userOrders} columns={columns} isLoading={isLoading} />
+        <DataTable
+          data={userOrders}
+          columns={columns()}
+          isLoading={isLoading}
+        />
       ) : (
         ''
       )}
