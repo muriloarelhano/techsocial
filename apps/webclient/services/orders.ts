@@ -9,6 +9,10 @@ export async function getOrders() {
   return (await productApiClient.get('')).data;
 }
 
+export async function getOrdersByUser(userId: string) {
+  return (await productApiClient.get(`/user/${userId}`)).data;
+}
+
 export async function createOrder(payload: CreateOrderProps) {
   return (await productApiClient.post('', payload)).data;
 }

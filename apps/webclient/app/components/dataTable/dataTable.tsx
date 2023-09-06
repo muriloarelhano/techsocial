@@ -6,10 +6,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
-  getFacetedMinMaxValues,
   getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
@@ -36,15 +33,10 @@ export function DataTable<DataType>({
     globalFilterFn: 'includesString',
     enableGlobalFilter: true,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
-    getFacetedMinMaxValues: getFacetedMinMaxValues(),
     debugTable: true,
-    debugHeaders: true,
-    debugColumns: false,
   });
 
   return (
@@ -62,7 +54,7 @@ export function DataTable<DataType>({
       </div>
 
       {isLoading ? (
-        'Carregado....'
+        'Carregando....'
       ) : data.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="table table-zebra">

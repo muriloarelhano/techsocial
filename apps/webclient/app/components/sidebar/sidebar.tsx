@@ -28,7 +28,7 @@ export function Sidebar() {
         </li>
         <li>
           <details open>
-            <summary>Vendas</summary>
+            <summary>Pedidos</summary>
             <ul>
               <li>
                 <Link href={'/dashboard/orders/new'}>

@@ -45,7 +45,7 @@ export default function CreateProducts() {
 
   return (
     <div>
-      <h1 className="text-2xl">Criar Venda</h1>
+      <h1 className="text-2xl">Criar Pedido</h1>
       <form
         id="create-user-form"
         className="mt-4 grid md:grid-cols-2 sm:grid-cols-1 gap-4 "
