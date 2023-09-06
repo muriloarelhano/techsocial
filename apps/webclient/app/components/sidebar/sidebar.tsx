@@ -3,7 +3,7 @@ import Link from 'next/link';
 export function Sidebar() {
   return (
     <nav className="px-8 h-full">
-      <ul className="menu w-60 h-full border-r border-r-black-200 ">
+      <ul className="menu w-60 h-full border-r border-r-black-200 dark:border-r-slate-700">
         <li>
           <details open>
             <summary>Usuários</summary>

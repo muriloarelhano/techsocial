@@ -5,7 +5,7 @@ import { ThemeToggle } from '../themeToggle/themeToggle';
 
 export function Header() {
   return (
-    <div className="navbar border-b border-b-black-200  ">
+    <div className="navbar border-b border-b-black-200 dark:border-b-slate-700">
       <div className="flex-1">
         <a
           className="btn btn-ghost normal-case text-xl"
