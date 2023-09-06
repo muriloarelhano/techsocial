@@ -9,7 +9,7 @@ export async function getUserDataById(id: number) {
   return (await userApiClient.get(`/${id}`)).data;
 }
 
-export async function getUsers(): Promise<any[]> {
+export async function getUsers(): Promise<CreateUserProps[]> {
   return (await userApiClient.get('')).data;
 }
 
