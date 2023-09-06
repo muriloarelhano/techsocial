@@ -30,24 +30,10 @@ export function DataTable<DataType>({
 }: DataTableProps<DataType>) {
   const [globalFilterValue, setGlobalFilterValue] = useState('');
 
-  const globalFilter = React.useCallback((rows: any, ids: any, query: any) => {
-    const searchTerm = String(query).toLowerCase();
-    return rows.filter((row: any) => {
-      const matches = ids.filter((id: any) => {
-        const rowValue = row.values[id];
-        return rowValue !== undefined
-          ? String(rowValue).toLowerCase().includes(searchTerm)
-          : false;
-      });
-
-      return matches.length > 0;
-    });
-  }, []);
-
   const table = useReactTable({
     data,
     columns,
-    globalFilterFn: globalFilter,
+    globalFilterFn: 'includesString',
     enableGlobalFilter: true,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
