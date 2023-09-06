@@ -12,12 +12,15 @@ import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { DevTool } from '@hookform/devtools';
 
 export default function CreateProducts({ params }) {
   const [isSaving, setIsSaving] = useState(false);
   const [order, setOrder] = useState<OrderProps>();
 
   const isEditing = params.id != 'new';
+
+  console.log({ isEditing });
 
   const { data, isError } = useQuery({
     queryKey: ['users'],
@@ -30,6 +33,7 @@ export default function CreateProducts({ params }) {
     watch,
     register,
     setValue,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<OrderProps>({
@@ -48,7 +52,7 @@ export default function CreateProducts({ params }) {
         }
       })();
     }
-  }, [isEditing, params.id, setValue]);
+  }, [isEditing]);
 
   const onSubmit = useCallback(
     async (data: OrderProps) => {
@@ -72,7 +76,11 @@ export default function CreateProducts({ params }) {
 
   return (
     <div>
-      <h1 className="text-2xl mb-8">Criar Pedido</h1>
+      <DevTool control={control} />
+      <h1 className="text-2xl mb-8">
+        {!isEditing ? 'Criar' : 'Editar'} Pedido
+      </h1>
+
       <form
         id="create-user-form"
         className={'mt-4 grid grid-cols-2 gap-4 '}
@@ -115,7 +123,7 @@ export default function CreateProducts({ params }) {
               </label>
               <input
                 type="number"
-                className="input input-bordered   w-full max-w-xs"
+                className="input input-bordered  w-full max-w-xs"
                 {...register('price')}
               />
               {errors.quantity && (
