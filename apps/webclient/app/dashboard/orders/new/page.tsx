@@ -50,7 +50,7 @@ export default function CreateProducts() {
       <h1 className="text-2xl mb-8">Criar Pedido</h1>
       <form
         id="create-user-form"
-        className={'mt-4 grid md:grid-cols-2 sm:grid-cols-1 gap-4 '}
+        className={'mt-4 grid grid-cols-2 gap-4 '}
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="form-control w-full max-w-xs">
@@ -111,7 +111,7 @@ export default function CreateProducts() {
                 rows={10}
                 cols={40}
                 placeholder="Descrição da venda"
-                className="textarea w-full max-w-xs"
+                className="textarea textarea-bordered w-full max-w-xs"
                 {...register('description')}
               />
               {errors.quantity && (
@@ -120,6 +120,7 @@ export default function CreateProducts() {
                 </span>
               )}
             </div>
+
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Quantidade</span>
@@ -133,17 +134,19 @@ export default function CreateProducts() {
                 <span className="text-red-300">A quantidade é obrigatória</span>
               )}
             </div>
+
+            <button
+              type="submit"
+              disabled={isSaving}
+              form="create-user-form"
+              className="btn btn-primary place-self-end"
+            >
+              Salvar
+            </button>
           </>
         ) : (
           ''
         )}
-
-        <input
-          form="create-user-form"
-          type="submit"
-          disabled={isSaving}
-          className="btn btn-primary place-self-end"
-        />
       </form>
     </div>
   );

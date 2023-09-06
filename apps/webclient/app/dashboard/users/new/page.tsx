@@ -35,7 +35,7 @@ export default function CreateUser() {
       <h1 className="text-2xl mb-8">Criar Usuário</h1>
       <form
         id="create-user-form"
-        className="mt-4 grid md:grid-cols-2 sm:grid-cols-1 gap-4 "
+        className="mt-4 grid grid-cols-2 gap-4 "
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="form-control w-full max-w-xs">
@@ -122,13 +122,14 @@ export default function CreateUser() {
             <span className="text-red-300">Número de telefone inválido</span>
           )}
         </div>
-
-        <input
+        <button
           form="create-user-form"
           type="submit"
           disabled={isLoading}
-          className="btn btn-primary col-start-3 place-self-end"
-        />
+          className="btn btn-primary col-start-2 place-self-end"
+        >
+          Salvar
+        </button>
       </form>
     </div>
   );
