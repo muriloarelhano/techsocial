@@ -2,18 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductOrderDto } from './dto/create-order.dto';
 import { UpdateProductOrderDto } from './dto/update-order.dto';
 import { Repository } from 'typeorm';
-import { ProductOrder } from './entities/product-order.entity';
+import { Order } from './entities/order.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-export class ProductOrdersService {
+export class OrdersService {
   constructor(
-    @InjectRepository(ProductOrder)
-    private readonly productOrdersRepository: Repository<ProductOrder>,
+    @InjectRepository(Order)
+    private readonly productOrdersRepository: Repository<Order>,
   ) {}
 
   create(createProductOrderDto: CreateProductOrderDto) {
-    const productOrder = new ProductOrder(createProductOrderDto);
+    const productOrder = new Order(createProductOrderDto);
     return this.productOrdersRepository.save(productOrder);
   }
 

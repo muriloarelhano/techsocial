@@ -12,14 +12,14 @@ import {
 } from '@nestjs/common';
 import { CreateProductOrderDto } from './dto/create-order.dto';
 import { UpdateProductOrderDto } from './dto/update-order.dto';
-import { ProductOrdersService } from './orders.service';
+import { OrdersService } from './orders.service';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Product Orders')
-@Controller('products/orders')
+@Controller('orders')
 @UsePipes(new ValidationPipe({ transform: true }))
-export class ProductOrdersController {
-  constructor(private readonly productOrdersService: ProductOrdersService) {}
+export class OrdersController {
+  constructor(private readonly ordersService: OrdersService) {}
 
   @Post()
   async create(@Body() createProductOrderDto: CreateProductOrderDto) {
@@ -28,12 +28,12 @@ export class ProductOrdersController {
     try {
       const user = await (
         await fetch(
-          `http://localhost:${process.env.API_PRODUCTS_PORT}/users/${userId}`,
+          `http://localhost:${process.env.APP_USERS_API_PORT}/users/${userId}`,
         )
       ).json();
 
       if (user) {
-        return this.productOrdersService.create(createProductOrderDto);
+        return this.ordersService.create(createProductOrderDto);
       }
     } catch (error) {
       throw new BadRequestException('invalid user id association');
@@ -42,17 +42,17 @@ export class ProductOrdersController {
 
   @Get()
   findAll() {
-    return this.productOrdersService.findAll();
+    return this.ordersService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.productOrdersService.findOne(+id);
+    return this.ordersService.findOne(+id);
   }
 
   @Get('/user/:userId')
   findByUser(@Param('userId') userId: string) {
-    return this.productOrdersService.findByUserId(+userId);
+    return this.ordersService.findByUserId(+userId);
   }
 
   @Patch(':id')
@@ -60,11 +60,11 @@ export class ProductOrdersController {
     @Param('id') id: string,
     @Body() updateProductOrderDto: UpdateProductOrderDto,
   ) {
-    return this.productOrdersService.update(+id, updateProductOrderDto);
+    return this.ordersService.update(+id, updateProductOrderDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.productOrdersService.remove(+id);
+    return this.ordersService.remove(+id);
   }
 }

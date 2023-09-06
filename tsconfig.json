@@ -14,7 +14,7 @@
     "strictPropertyInitialization": false,
     "paths": {
       "@users-api/*": ["./apps/users-api/src/*"],
-      "@products-api/*": ["./apps/products-api/src/*"],
+      "@orders-api/*": ["./apps/orders-api/src/*"],
       "@webclient/*": ["./apps/webclient/*"]
     }
   }

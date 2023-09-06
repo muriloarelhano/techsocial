@@ -28,20 +28,20 @@ export function Sidebar() {
         </li>
         <li>
           <details open>
-            <summary>Produtos</summary>
+            <summary>Vendas</summary>
             <ul>
               <li>
-                <Link href={'/dashboard/products/new'}>
+                <Link href={'/dashboard/orders/new'}>
                   <p>Cadastrar</p>
                 </Link>
               </li>
               <li>
-                <Link href={'/dashboard/products'}>
+                <Link href={'/dashboard/orders'}>
                   <p>Listar</p>
                 </Link>
               </li>
               <li>
-                <Link href={'/dashboard/products/user'}>
+                <Link href={'/dashboard/orders/user'}>
                   <p>Listar por usuário </p>
                 </Link>
               </li>

@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class ProductOrder {
+export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -29,7 +29,7 @@ export class ProductOrder {
   @UpdateDateColumn()
   updatedAt: string;
 
-  constructor(partial: Partial<ProductOrder> = {}) {
+  constructor(partial: Partial<Order> = {}) {
     Object.assign(this, partial);
   }
 }

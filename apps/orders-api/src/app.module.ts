@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ApiProductsController } from './products.controller';
-import { ApiProductsService } from './products.service';
 import { ProductOrdersModule } from './orders/orders.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { ProductOrder } from './orders/entities/product-order.entity';
+import { Order } from './orders/entities/order.entity';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -20,12 +20,12 @@ import { ProductOrder } from './orders/entities/product-order.entity';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [ProductOrder],
+      entities: [Order],
       synchronize: true,
     }),
     ProductOrdersModule,
   ],
-  controllers: [ApiProductsController],
-  providers: [ApiProductsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
-export class ApiProductsModule {}
+export class AppModule {}
