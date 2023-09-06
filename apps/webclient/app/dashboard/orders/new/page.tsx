@@ -1,5 +1,6 @@
 'use client';
 
+import { createOrder } from '@/apps/webclient/services';
 import { getUsers } from '@/apps/webclient/services/user';
 import {
   CreateOrderProps,
@@ -34,7 +35,8 @@ export default function CreateProducts() {
     console.log(data);
     setIsSaving(true);
     try {
-      toast.success('Usuário criado com sucesso');
+      await createOrder(data);
+      toast.success('Pedido criado com sucesso');
     } catch (error) {
       toast.error('Erro ao cadastrar usuário');
     }

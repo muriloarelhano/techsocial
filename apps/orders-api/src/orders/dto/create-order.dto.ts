@@ -1,17 +1,22 @@
-import { IsNumber, IsString, Min } from 'class-validator';
+import { IsNumber, IsPositive, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateProductOrderDto {
   @IsNumber()
+  @IsPositive()
+  @Type(() => Number)
   userId: number;
 
   @IsString()
   description: string;
 
   @IsNumber()
-  @Min(1)
+  @IsPositive()
+  @Type(() => Number)
   quantity: number;
 
   @IsNumber()
-  @Min(0)
+  @IsPositive()
+  @Type(() => Number)
   price: number;
 }

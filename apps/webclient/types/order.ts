@@ -1,5 +1,5 @@
-import { TypeOf, number, object, string } from 'zod';
 import validator from 'validator';
+import { TypeOf, number, object, string } from 'zod';
 
 export const cerateOrderSchema = object({
   userId: string().refine(validator.isAlphanumeric),
