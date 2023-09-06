@@ -1,5 +1,7 @@
 import { CreateOrderProps } from '@/apps/webclient/types/order';
-import { ColumnDef } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
+
+const columnHelper = createColumnHelper<CreateOrderProps>();
 
 export const columns: ColumnDef<CreateOrderProps, any>[] = [
   {
@@ -22,4 +24,9 @@ export const columns: ColumnDef<CreateOrderProps, any>[] = [
     accessorKey: 'description',
     cell: (info) => info.getValue(),
   },
+  columnHelper.display({
+    id: 'actions',
+    header: 'Ações',
+    cell: (props) => 'Nenhuma ação disponível',
+  }),
 ];

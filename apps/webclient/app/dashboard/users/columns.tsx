@@ -1,5 +1,7 @@
 import { CreateUserProps } from '@/apps/webclient/types';
-import { ColumnDef } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
+
+const columnHelper = createColumnHelper<CreateUserProps>();
 
 export const columns: ColumnDef<CreateUserProps, any>[] = [
   {
@@ -27,4 +29,9 @@ export const columns: ColumnDef<CreateUserProps, any>[] = [
     accessorKey: 'document',
     cell: (info) => info.getValue(),
   },
+  columnHelper.display({
+    id: 'actions',
+    header: 'Ações',
+    cell: (props) => 'Nenhuma ação disponível',
+  }),
 ];
